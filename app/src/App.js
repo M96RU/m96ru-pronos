@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Matches from './Matches'
+import {BottomNavigation, BottomNavigationAction} from "@mui/material";
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <header className="App-header">
+                <Matches/>
+
+                <BottomNavigation>
+                    <BottomNavigationAction label="Recents" icon={<RestoreIcon/>}/>
+                    <BottomNavigationAction label="Favorites" icon={<FavoriteIcon/>}/>
+                    <BottomNavigationAction label="Nearby" icon={<LocationOnIcon/>}/>
+                </BottomNavigation>
+            </header>
+        </div>
+    );
 }
 
 export default App;
