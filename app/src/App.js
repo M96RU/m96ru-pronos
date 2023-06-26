@@ -1,10 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
+import Profile from "./Profile";
 
 function App() {
   return (
+
     <div className="App">
+
       <header className="App-header">
+        <LoginButton />
+        <LogoutButton />
+        <Profile />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
