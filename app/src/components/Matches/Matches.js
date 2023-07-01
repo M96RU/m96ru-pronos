@@ -1,6 +1,8 @@
 import {Component} from 'react';
-import getMatches from './helpers/fetch'
-import Match from "./components/Match/Match";
+import getMatches from '../../helpers/fetch'
+import Match from "../Match";
+
+import './Matches.css'
 
 class Matches extends Component {
     state = {data: []}

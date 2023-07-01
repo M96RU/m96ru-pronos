@@ -1,6 +1,6 @@
 import './App.css';
 import Profile from "./Profile";
-import Matches from "./Matches";
+import Matches from "./components/Matches";
 
 function App() {
     return (
