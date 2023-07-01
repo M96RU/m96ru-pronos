@@ -22,8 +22,8 @@ class Matches extends Component {
         return (
             <div>
                 {
-                    data.map(({id, home_team, away_team}) => (
-                        <Match key={id} away={away_team} id={id} home={home_team} />
+                    data.map((match, index) => (
+                        <Match key={index} match={match} />
                     ))
                 }
             </div>
