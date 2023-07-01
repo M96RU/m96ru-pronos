@@ -1,5 +1,6 @@
 import {Component} from 'react';
 import getMatches from './helpers/fetch'
+import Match from "./components/Match/Match";
 
 class Matches extends Component {
     state = {data: []}
@@ -20,7 +21,7 @@ class Matches extends Component {
             <div>
                 {
                     data.map(({id, home_team, away_team}) => (
-                        <p key={{id}}>{home_team} - {away_team}</p>
+                        <Match key={id} away={away_team} id={id} home={home_team} />
                     ))
                 }
             </div>
