@@ -1,28 +1,31 @@
-import {useEffect, useState} from 'react';
+import {Component} from 'react';
+import getMatches from './helpers/fetch'
 
-function Matches() {
-    const [name, setName] = useState([]);
+class Matches extends Component {
+    state = {data: []}
 
-    useEffect(
-        () => {
-            names()
-        }, []
-    )
+    componentDidMount = async () => {
+        const data = this.state
+        const update = await getMatches()
 
-    const names = async () => {
-        const response = await fetch('https://m96ru-pronos-api.vercel.app/api/matches');
-        setName(await response.json())
+        if (data !== update) {
+            return this.setState({data: update})
+        }
     }
 
-    return (<div>
-            {
-                name.map((data) => {
-                    return (
-                        <p key={data.id}>{data.home_team} - {data.away_team}</p>
-                    )
-                })
-            }
-    </div>);
+    render() {
+        const {data} = this.state
+
+        return (
+            <div>
+                {
+                    data.map(({id, home_team, away_team}) => (
+                        <p key={{id}}>{home_team} - {away_team}</p>
+                    ))
+                }
+            </div>
+        );
+    }
 }
 
 export default Matches;
