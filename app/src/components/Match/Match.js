@@ -12,9 +12,9 @@ class Match extends Component {
             home: PropTypes.string.isRequired,
             away: PropTypes.string.isRequired,
             h2h: PropTypes.bool.isRequired,
-            h2h_1: PropTypes.string,
-            h2h_X: PropTypes.string,
-            h2h_2: PropTypes.string,
+            h2h_1: PropTypes.number,
+            h2h_X: PropTypes.number,
+            h2h_2: PropTypes.number,
         }).isRequired
     }
 
@@ -24,14 +24,20 @@ class Match extends Component {
         if (match.h2h) {
             return (
                 <div className="Match">
-                    <p>{match.begin}: {match.home} - {match.away}</p>
-                    <p>{match.h2h_1} - {match.h2h_X} - {match.h2h_2}</p>
+                    <div className="Date">{new Date(match.begin).toLocaleString('fr')}</div>
+                    <div className="Teams">{match.home} - {match.away}</div>
+                    <div className="Odds">
+                        <span className="Odd">{match.h2h_1.toPrecision(3)}</span>
+                        <span className="Odd">{match.h2h_X.toPrecision(3)}</span>
+                        <span className="Odd">{match.h2h_2.toPrecision(3)}</span>
+                    </div>
                 </div>
             )
         } else {
             return (
                 <div className="Match">
-                    <p>{match.begin}: {match.home} - {match.away}</p>
+                    <div className="Date">{new Date(match.begin).toLocaleString('fr')}</div>
+                    <div className="Teams">{match.home} - {match.away}</div>
                 </div>
             )
         }
