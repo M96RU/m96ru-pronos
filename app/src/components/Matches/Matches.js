@@ -19,11 +19,17 @@ class Matches extends Component {
     render() {
         const {data} = this.state
 
+        if (!data.length) {
+            return (
+                <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading matches..." />
+            )
+        }
+
         return (
             <div>
                 {
                     data.map((match, index) => (
-                        <Match key={index} match={match} />
+                        <Match key={index} match={match}/>
                     ))
                 }
             </div>
