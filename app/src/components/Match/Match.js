@@ -8,7 +8,7 @@ class Match extends Component {
     static propTypes = {
         match: PropTypes.shape({
             id: PropTypes.string.isRequired,
-            begin: PropTypes.instanceOf(Date),
+            begin: PropTypes.string.isRequired,
             home: PropTypes.string.isRequired,
             away: PropTypes.string.isRequired,
             h2h: PropTypes.bool.isRequired,
@@ -45,4 +45,4 @@ class Match extends Component {
 
 }
 
-export default Match;
+export default Match
