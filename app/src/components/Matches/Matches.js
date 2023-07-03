@@ -37,4 +37,4 @@ class Matches extends Component {
     }
 }
 
-export default Matches;
+export default Matches
