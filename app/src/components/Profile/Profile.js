@@ -1,16 +1,17 @@
 import React from "react";
 import {useAuth0} from "@auth0/auth0-react";
-import LoginButton from "../../LoginButton";
-import LogoutButton from "../../LogoutButton";
+import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 import './Profile.css'
 
+
 const Profile = () => {
-    const {user, isAuthenticated, isLoading} = useAuth0()
+    const {user, isAuthenticated, isLoading, loginWithRedirect, logout} = useAuth0()
 
     if (isAuthenticated) {
         return <div>
-            <h2>{user.name} <LogoutButton/></h2>
+            <h2>{user.name} <LogoutIcon className="Logout" onClick={() => logout({logoutParams: {returnTo: window.location.origin}})}/></h2>
         </div>
     }
 
@@ -18,7 +19,11 @@ const Profile = () => {
         return <div>Loading ...</div>;
     }
 
-    return <LoginButton/>
+    return (
+        <div className="Login" onClick={() => loginWithRedirect()}>
+            Login <LoginIcon/>
+        </div>
+    )
 
 }
 
