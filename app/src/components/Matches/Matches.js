@@ -8,12 +8,8 @@ class Matches extends Component {
     state = {data: []}
 
     componentDidMount = async () => {
-        const data = this.state
         const update = await getMatches()
-
-        if (data !== update) {
-            return this.setState({data: update})
-        }
+        return this.setState({data: update})
     }
 
     render() {
@@ -21,7 +17,7 @@ class Matches extends Component {
 
         if (!data.length) {
             return (
-                <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading matches..." />
+                <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading matches..."/>
             )
         }
 
