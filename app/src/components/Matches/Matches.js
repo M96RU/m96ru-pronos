@@ -12,6 +12,11 @@ class Matches extends Component {
         return this.setState({data: update})
     }
 
+    _selectOdd = (match, odd) => {
+        match.selected = odd
+        console.log(match);
+    }
+
     render() {
         const {data} = this.state
 
@@ -25,7 +30,7 @@ class Matches extends Component {
             <div>
                 {
                     data.map((match, index) => (
-                        <Match key={index} match={match}/>
+                        <Match selectOdd={this._selectOdd} key={index} match={match}/>
                     ))
                 }
             </div>

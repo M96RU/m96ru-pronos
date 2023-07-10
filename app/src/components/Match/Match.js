@@ -11,36 +11,27 @@ class Match extends Component {
             begin: PropTypes.string.isRequired,
             home: PropTypes.string.isRequired,
             away: PropTypes.string.isRequired,
-            h2h: PropTypes.bool.isRequired,
             h2h_1: PropTypes.number,
-            h2h_X: PropTypes.number,
+            h2h_x: PropTypes.number,
             h2h_2: PropTypes.number,
-        }).isRequired
+        }).isRequired,
+        selectOdd: PropTypes.func.isRequired
     }
 
     render = () => {
-        const {match} = this.props
+        const {match, selectOdd} = this.props
 
-        if (match.h2h) {
-            return (
-                <div className="Match">
-                    <div className="Date">{new Date(match.begin).toLocaleString('fr')}</div>
-                    <div className="Teams">{match.home} - {match.away}</div>
-                    <div className="Odds">
-                        <span className="Odd">{match.h2h_1.toPrecision(3)}</span>
-                        <span className="Odd">{match.h2h_X.toPrecision(3)}</span>
-                        <span className="Odd">{match.h2h_2.toPrecision(3)}</span>
-                    </div>
+        return (
+            <div className="Match">
+                <div className="Date">{new Date(match.begin).toLocaleString('fr')}</div>
+                <div className="Teams">{match.home} - {match.away}</div>
+                <div className="Odds">
+                    <span className="Odd" onClick={() => selectOdd(match, "h2h_1")}>{match.h2h_1.toPrecision(3)}</span>
+                    <span className="Odd" onClick={() => selectOdd(match, "h2h_x")}>{match.h2h_x.toPrecision(3)}</span>
+                    <span className="Odd" onClick={() => selectOdd(match, "h2h_2")}>{match.h2h_2.toPrecision(3)}</span>
                 </div>
-            )
-        } else {
-            return (
-                <div className="Match">
-                    <div className="Date">{new Date(match.begin).toLocaleString('fr')}</div>
-                    <div className="Teams">{match.home} - {match.away}</div>
-                </div>
-            )
-        }
+            </div>
+        )
     }
 
 }
