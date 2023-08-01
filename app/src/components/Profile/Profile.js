@@ -10,6 +10,7 @@ const Profile = () => {
     const {user, isAuthenticated, isLoading, loginWithRedirect, logout} = useAuth0()
 
     if (isAuthenticated) {
+        console.log(user);
         return <div>
             <h2>{user.name} <LogoutIcon className="Logout" onClick={() => logout({logoutParams: {returnTo: window.location.origin}})}/></h2>
         </div>

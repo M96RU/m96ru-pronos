@@ -1,21 +1,16 @@
-import {Component} from 'react';
-import Profile from "./components/Profile";
-import Matches from "./components/Matches";
+import React from "react";
+import Home from "./pages/Home";
 
 import './App.css';
 
-class App extends Component {
-
-    render() {
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <Profile/>
-                    <Matches/>
-                </header>
-            </div>
-        )
-    }
-}
+const App = () => {
+    return (
+        <div className="App">
+            <header className="App-header">
+                <Home/>
+            </header>
+        </div>
+    );
+};
 
 export default App;

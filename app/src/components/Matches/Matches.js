@@ -1,23 +1,37 @@
-import {Component} from 'react';
-import getMatches from '../../helpers/fetch'
+import React, {Component} from 'react';
+import {getMatches, sendBet} from '../../helpers/fetch'
 import Match from "../Match";
 
 import './Matches.css'
+import PropTypes from "prop-types";
 
 class Matches extends Component {
-    state = {data: []}
 
-    componentDidMount = async () => {
-        const update = await getMatches()
-        return this.setState({data: update})
+    static propTypes = {
+        userId: PropTypes.string,
     }
 
-    _selectOdd = (match, odd) => {
-        match.selected = odd
-        console.log(match);
+    state = {
+        data: []
+    }
+
+    componentDidMount = async () => {
+        const {userId} = this.props;
+        const update = await getMatches(userId);
+        this.setState({
+            data: update
+        })
+    }
+
+    _userChoice = (match, choice) => {
+        const {userId} = this.props;
+        const response = sendBet(userId, match, choice)
+            .catch(error => console.error('Odd not send to the back'))
+            .then(response => this.componentDidMount());
     }
 
     render() {
+
         const {data} = this.state
 
         if (!data.length) {
@@ -30,7 +44,7 @@ class Matches extends Component {
             <div>
                 {
                     data.map((match, index) => (
-                        <Match selectOdd={this._selectOdd} key={index} match={match}/>
+                        <Match userChoice={this._userChoice} key={index} match={match}/>
                     ))
                 }
             </div>
